@@ -4,7 +4,10 @@ from keras.models import load_model
 from keras.preprocessing import image
 import os
 from tensorflow import keras
+import re
+import sys
 
+from gunicorn.app.wsgiapp import run
 
 app = Flask(__name__)
 model = load_model('pothole_classifire.h5')
@@ -44,5 +47,6 @@ def predict():
     return jsonify(result)
  
 
-if __name__ == '__main__':
-    app.run(debug=True)
+ if __name__ == '__main__':
+        sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$','',sys.argv[0])
+        sys.exit(run())   
