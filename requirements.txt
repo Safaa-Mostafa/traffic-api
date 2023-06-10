@@ -2,3 +2,4 @@ tensorflow
 flask
 flask_restful
 numpy
+gunicorn
