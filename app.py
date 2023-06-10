@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import numpy as np 
 from keras.models import load_model
 from keras.preprocessing import image
-
+import os
 from tensorflow import keras
 
 
@@ -44,5 +44,5 @@ def predict():
     return jsonify(result)
  
 
-if __name__ == '__main__':
-    app.run(debug=True)
+port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port)
